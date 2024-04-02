@@ -1,0 +1,35 @@
+# Distribution / packaging
+.Python
+build/
+dist/
+downloads/
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+# htmlcov/
+# .tox/
+# .nox/
+# .coverage
+# .coverage.*
+# .cache
+# nosetests.xml
+# coverage.xml
+# *.cover
+# *.py,cover
+# .hypothesis/
+# .pytest_cache/
+# cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+
+# Environments
+venv/
+venv.bak/
