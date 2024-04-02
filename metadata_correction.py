@@ -7,10 +7,18 @@ from datetime import datetime
 logging.basicConfig( encoding='utf-8', level=logging.INFO, format='%(levelname)s: %(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
 def correct_metadata_and_rename(file_path):
-    # Extract EXIF data
-    exif_dict = piexif.load(file_path)
-    if not exif_dict['Exif']:
+    if not file_path.lower().endswith(('.jpg', '.jpeg', '.tif', '.tiff')):
+        print(f"Skipping non-image file: {file_path}")
         return
+
+    try:
+        exif_dict = piexif.load(file_path)
+    except piexif.InvalidImageDataError:
+        print(f"Skipping invalid image file: {file_path}")
+        return
+
+    # rest of the function remains the same
+
 
     datetime_original = exif_dict['Exif'][36867]
     datetime_original = datetime.strptime(datetime_original.decode('utf-8'), "%Y:%m:%d %H:%M:%S")
